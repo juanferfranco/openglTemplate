@@ -38,6 +38,13 @@ void GetOpenGLInfo() {
 
 }
 
+// Get the maximum number of vertex attributes supported
+int GetMaxVertexAttributes() {
+	int maxVertexAttributes;
+	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &maxVertexAttributes);
+	return maxVertexAttributes;
+}
+
 int main()
 {
 
@@ -86,8 +93,12 @@ int main()
 	// Setup Viewport size
 	glViewport(0, 0, bufferWidth, bufferHeight);
 
+	glfwSwapInterval(1); // Enable vsync
+
 	// Get OpenGL version
 	GetOpenGLInfo();
+
+	std::cout << "Max Vertex Attributes: " << GetMaxVertexAttributes() << std::endl;
 
 
 // build and compile our shader program
